@@ -5,8 +5,20 @@ const store = new session.MemoryStore();
 const PORT = process.env.PORT || 8080;
 const morgan = require('morgan');
 
+const bodyParser = require('body-parser');
+
 app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+/*app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());*/
 app.use(session({
         secret: 'someSecret',
         cookie: { maxAge: 30000000, secure: false },
@@ -15,7 +27,7 @@ app.use(session({
         store
     })
 );
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('../public'));
 app.set('view engine', 'ejs');
 
 // Routers

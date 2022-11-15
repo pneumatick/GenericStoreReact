@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const path = require('path');
 const { queryUser } = require('./helpers');
 
 router.get('/', (req, res) => {
@@ -9,6 +10,7 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const { username, password } = req.body;
+    console.log(req.body)
     
     try {
         const user = await queryUser(username);
@@ -20,7 +22,8 @@ router.post('/', async (req, res) => {
             //req.session.user = { username: username, password: password };
             req.session.user = {username: username, permission: user.permission}
             console.log(req.session); // just for testing, obviously insecure
-            res.redirect('store');
+            //res.redirect('store');
+            res.status(200).json();
         }
         else {
             res.status(403).json({ msg: 'Bad credentials' });
