@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const sqlite3 = require('sqlite3');
 const inventoryDB = new sqlite3.Database('./databases/inventory.sqlite');
+const path = require('path')
 
 const HIGH_PERMISSIONS = ['admin', 'employee'];
 
 function validateHighPermission(req, res, next) {
     try {
+        console.log(req.session)
         const authenticated = req.session.authenticated;
         const permissionGranted = HIGH_PERMISSIONS.includes(req.session.user.permission);
         if (authenticated && permissionGranted) {
@@ -22,7 +24,9 @@ function validateHighPermission(req, res, next) {
 }
 
 router.get('/', validateHighPermission, (req, res) => {
-    res.render('inventory');
+//router.get('/', (req, res) => {
+    //res.render('inventory');
+    res.sendFile(path.join(__dirname, '../views/inventory.ejs'));
 });
 
 router.post('/create', async (req, res) => {

@@ -31,15 +31,17 @@ export default class Login extends React.Component {
     }
 
     async logIn() {
-        const res = axios({
+        const res = await axios({
             method: 'post',
             url: URL,
+            withCredentials: true,
             data: {
                 username: this.state.username,
                 password: this.state.password
             }
         })
         .then((res) => {
+            console.log(res.headers)
             console.log('Log in successful!');
         })
         .catch((error) => {

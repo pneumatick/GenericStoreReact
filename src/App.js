@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import Login from './pages/login';
 //import Register from './pages/register';
 //import Store from './pages/store';
+import Inventory from './pages/inventory';
 
 function App() {
   /*return (
@@ -19,6 +20,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Link to="/login">Log in</Link>
+        <Link to="/inventory">Inventory</Link>
         <Routes>
           <Route path="/login" element={<Login/>}/>
           <Route path="/inventory" element={<Inventory/>}/>
