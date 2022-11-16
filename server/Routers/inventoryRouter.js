@@ -37,7 +37,8 @@ router.post('/create', async (req, res) => {
         res.status(500).send(); 
     });
     console.log(`New product ${product} added`);
-    res.redirect('/inventory');
+    //res.redirect('/inventory');
+    res.status(200).send();
 });
 
 router.post('/update', async (req, res) => {

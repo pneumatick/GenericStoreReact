@@ -13,6 +13,8 @@ export default class Inventory extends React.Component {
             loading: true,
             authorized: false
         };
+
+        this.composePostReq = this.composePostReq.bind(this);
     }
 
     async getPage() {
@@ -33,6 +35,26 @@ export default class Inventory extends React.Component {
         this.setState({ loading: false, authorized: authorized});
     }
 
+    async composePostReq(destination, data) {
+        let res = await axios({
+            method: 'post',
+            url: URL + destination,
+            withCredentials: true,
+            data: data
+        })
+        .then((res) => {
+            if (res.status == 200) {
+                console.log("Post successful!");
+            }
+            else {
+                console.log(`Status: ${res.status}`);
+            }
+        })
+        .catch((error) => {
+            console.error(error.message)
+        });
+    }
+
     async componentDidMount() {
         this.getPage();
     }
@@ -48,9 +70,9 @@ export default class Inventory extends React.Component {
         }
         else {
             page = [
-                <CreateProduct/>,
-                <UpdateProduct/>,
-                <DeleteProduct/>
+                <CreateProduct makePost={this.composePostReq} />,
+                <UpdateProduct makePost={this.composePostReq} />,
+                <DeleteProduct makePost={this.composePostReq} />
             ];
         }
 
