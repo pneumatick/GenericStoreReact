@@ -45,7 +45,7 @@ app.use(session({
     })
 );
 app.use(express.static('../public'));
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 // Routers
 const Register = require('./Routers/registerRouter');
