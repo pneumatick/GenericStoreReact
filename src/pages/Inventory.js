@@ -17,6 +17,9 @@ export default class Inventory extends React.Component {
         this.composePostReq = this.composePostReq.bind(this);
     }
 
+    // Confirm that the user is authorized to view the control panel forms.
+    // Status 200 = Authorized
+    // Any other status = Unauthorized (may need to handle some stauses explicitly later)
     async getPage() {
         let authorized = false;
 
@@ -35,6 +38,8 @@ export default class Inventory extends React.Component {
         this.setState({ loading: false, authorized: authorized});
     }
 
+    // Make an inventory-related POST request.
+    // Intended for creating, updating, and deleting products.
     async composePostReq(destination, data) {
         let res = await axios({
             method: 'post',
@@ -61,7 +66,13 @@ export default class Inventory extends React.Component {
 
     render() {
         let page;
+        let forms = [
+            <CreateProduct makePost={this.composePostReq} />,
+            <UpdateProduct makePost={this.composePostReq} />,
+            <DeleteProduct makePost={this.composePostReq} />
+        ];
 
+        // Ensure that unauthorized users cannot see the forms
         if (this.state.loading) {
             page = <p>Loading...</p>;
         }
@@ -69,11 +80,7 @@ export default class Inventory extends React.Component {
             page = <p>You are not authorized to view this page</p>;
         }
         else {
-            page = [
-                <CreateProduct makePost={this.composePostReq} />,
-                <UpdateProduct makePost={this.composePostReq} />,
-                <DeleteProduct makePost={this.composePostReq} />
-            ];
+            page = forms;
         }
 
         return (
