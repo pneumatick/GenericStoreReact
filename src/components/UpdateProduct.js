@@ -41,15 +41,26 @@ export default class UpdateProduct extends React.Component {
         };
 
         return (
-            <div>
+            <div className='Inventory-form'>
                 <h3>Update</h3>
-                <label>Product</label>
-                <input id="name" type="text" onChange={this.handleChange}/>
-                <label>Quantity</label>
-                <input id="quantity" type="number" onChange={this.handleChange}/>
-                <label>Price</label>
-                <input id="price" type="text" step="any" onChange={this.handleChange}/>
-                <button onClick={() => this.props.makePost(DESTINATION, data)}>Update</button>
+                <div className='Form-field'>
+                    <label>Product</label>
+                    <input id="name" type="text" onChange={this.handleChange}/>
+                </div>
+                <div className='Form-field'>
+                    <label>Quantity</label>
+                    <input id="quantity" type="number" onChange={this.handleChange}/>
+                </div>
+                <div className='Form-field'>
+                    <label>Price</label>
+                    <input id="price" type="text" step="any" onChange={this.handleChange}/>
+                </div>
+                <button 
+                    className='Form-button'
+                    onClick={() => this.props.makePost(DESTINATION, data)}
+                >
+                    Update
+                </button>
             </div>
         );
     }

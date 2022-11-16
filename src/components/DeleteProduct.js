@@ -31,11 +31,18 @@ export default class DeleteProduct extends React.Component {
         };
 
         return (
-            <div>
+            <div className="Inventory-form">
                 <h3>Delete</h3>
-                <label>Product</label>
-                <input id="name" type="text" onChange={this.handleChange}/>
-                <button onClick={() => this.props.makePost(DESTINATION, data)}>Delete</button>
+                <div className="Form-field">
+                    <label>Product</label>
+                    <input id="name" type="text" onChange={this.handleChange}/>
+                </div>
+                <button 
+                    className="Form-button"
+                    onClick={() => this.props.makePost(DESTINATION, data)}
+                >
+                    Delete
+                </button>
             </div>
         );
     }

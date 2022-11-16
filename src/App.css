@@ -33,7 +33,7 @@
   color: red;
 }
 
-.Registration-form, .Login-form {
+.Registration-form, .Login-form, .Inventory-form {
   display: flex;
   flex-direction: column;
   align-items: center;
