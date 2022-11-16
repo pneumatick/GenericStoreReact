@@ -26,7 +26,7 @@ export default class Inventory extends React.Component {
             withCredentials: true
         })
         .then((res) => {
-            res.status == 200 ? authorized = true : authorized = false;
+            res.status === 200 ? authorized = true : authorized = false;
         })
         .catch((error) => {
             console.error(error.message)
@@ -43,7 +43,7 @@ export default class Inventory extends React.Component {
             data: data
         })
         .then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 console.log("Post successful!");
             }
             else {

@@ -48,7 +48,8 @@ router.post('/update', async (req, res) => {
         res.status(500).send(); 
     });
     console.log(`${product} updated`);
-    res.redirect('/inventory');
+    //res.redirect('/inventory');
+    res.status(200).send();
 });
 
 router.post('/delete', async (req, res) => {
@@ -58,7 +59,8 @@ router.post('/delete', async (req, res) => {
         res.status(500).send(); 
     });
     console.log(`${product} deleted`);
-    res.redirect('/inventory');
+    //res.redirect('/inventory');
+    res.status(200).send();
 });
 
 /* SQLite functions */
