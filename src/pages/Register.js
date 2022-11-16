@@ -61,30 +61,41 @@ export default class Register extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Register</h1>
-                <label>Username</label>
-                <input 
-                    id="username" 
-                    type="text" 
-                    placeholder="Enter your username"
-                    onChange={this.handleChange}
-                />
-                <label>Password</label>
-                <input 
-                    id="password" 
-                    type="password" 
-                    placeholder="Enter your password"
-                    onChange={this.handleChange}
-                />
-                <label>Email</label>
-                <input 
-                    id="email" 
-                    type="email" 
-                    placeholder="Enter your email"
-                    onChange={this.handleChange}
-                />
-                <button onClick={this.makePostReq}>Register</button>
+            <div className="Registration-form">
+                <h1>Register a new account</h1>
+                <div className="Form-field">
+                    <label>Username</label>
+                    <input 
+                        id="username" 
+                        type="text" 
+                        placeholder="Enter your username"
+                        onChange={this.handleChange}
+                    />
+                </div>
+                <div className="Form-field">
+                    <label>Password</label>
+                    <input 
+                        id="password" 
+                        type="password" 
+                        placeholder="Enter your password"
+                        onChange={this.handleChange}
+                    />
+                </div>
+                <div className="Form-field">
+                    <label>Email</label>
+                    <input 
+                        id="email" 
+                        type="email" 
+                        placeholder="Enter your email"
+                        onChange={this.handleChange}
+                    />
+                </div>
+                <button 
+                    className="Form-button" 
+                    onClick={this.makePostReq}
+                >
+                    Register
+                </button>
             </div>
         );
     }

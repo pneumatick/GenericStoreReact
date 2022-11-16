@@ -25,7 +25,26 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: blue;
+  margin: 0 14px;
+}
+
+.App-link:hover {
+  color: red;
+}
+
+.Registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 20vw;
+  margin: 0 40vw;
+}
+
+.Form-field, .Form-button {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0;
 }
 
 @keyframes App-logo-spin {

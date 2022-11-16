@@ -16,11 +16,11 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <Link to="/">Home</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/login">Log in</Link>
-        <Link to="/store">Store</Link>
-        <Link to="/inventory">Inventory</Link>
+        <Link className='App-link' to="/">Home</Link>
+        <Link className='App-link' to="/register">Register</Link>
+        <Link className='App-link' to="/login">Log in</Link>
+        <Link className='App-link' to="/store">Store</Link>
+        <Link className='App-link' to="/inventory">Inventory</Link>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/register" element={<Register/>}/>
