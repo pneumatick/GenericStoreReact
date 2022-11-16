@@ -1,41 +1,55 @@
 import React from 'react';
 import axios from 'axios';
-import Parser from 'html-react-parser';
 
 const URL = 'http://localhost:8080/inventory';
 
 export default class Inventory extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { page: '<p>Loading...</p>' };
+        this.state = { 
+            loading: true,
+            authorized: false
+        };
     }
 
-    // I don't know if this is the best method, but it does work
     async getPage() {
-        let page = '';
+        let authorized = false;
+
         let res = await axios({
             method: 'get',
             url: URL,
             withCredentials: true
         })
         .then((res) => {
-            page = res.data;
+            res.status == 200 ? authorized = true : authorized = false;
         })
         .catch((error) => {
             console.error(error.message)
         });
-        return await page;
+
+        this.setState({ loading: false, authorized: authorized});
     }
 
     async componentDidMount() {
-        let page = await this.getPage();
-        this.setState({ page: page ? page : '<p>Failed to get page</p>' });
+        this.getPage();
     }
 
     render() {
+        let page;
+
+        if (this.state.loading) {
+            page = <p>Loading...</p>;
+        }
+        else if (this.state.authorized) {
+            page = <p>Authorized</p>;
+        }
+        else {
+            page = <p>You are not authorized to view this page</p>;
+        }
+
         return (
             <div>
-                {Parser(this.state.page)}
+                {page}
             </div>
         );
     }

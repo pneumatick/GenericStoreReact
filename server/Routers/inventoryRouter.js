@@ -26,7 +26,8 @@ function validateHighPermission(req, res, next) {
 router.get('/', validateHighPermission, (req, res) => {
 //router.get('/', (req, res) => {
     //res.render('inventory');
-    res.sendFile(path.join(__dirname, '../views/inventory.ejs'));
+    //res.sendFile(path.join(__dirname, '../views/inventory.ejs'));
+    res.status(200).send();
 });
 
 router.post('/create', async (req, res) => {
