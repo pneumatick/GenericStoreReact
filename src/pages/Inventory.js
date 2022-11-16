@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import CreateProduct from '../components/CreateProduct';
+import UpdateProduct from '../components/UpdateProduct';
 
 const URL = 'http://localhost:8080/inventory';
 
@@ -40,11 +42,14 @@ export default class Inventory extends React.Component {
         if (this.state.loading) {
             page = <p>Loading...</p>;
         }
-        else if (this.state.authorized) {
-            page = <p>Authorized</p>;
+        else if (!this.state.authorized) {
+            page = <p>You are not authorized to view this page</p>;
         }
         else {
-            page = <p>You are not authorized to view this page</p>;
+            page = [
+                <CreateProduct/>,
+                <UpdateProduct/>
+            ];
         }
 
         return (

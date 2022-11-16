@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-import Login from './pages/login';
+import Login from './pages/Login';
 //import Register from './pages/register';
 //import Store from './pages/store';
-import Inventory from './pages/inventory';
+import Inventory from './pages/Inventory';
 
 function App() {
   /*return (
