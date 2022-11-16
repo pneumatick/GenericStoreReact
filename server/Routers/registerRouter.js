@@ -21,7 +21,8 @@ router.post('/', async (req, res) => {
 
         console.log(`New user created: ${username}`);
 
-        res.redirect('login');
+        //res.redirect('login');
+        res.status(200).send();
     }
     catch (err) {
         res.status(500).json({ msg: err.message });

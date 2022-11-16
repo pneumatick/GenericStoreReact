@@ -78,6 +78,7 @@ export default class Inventory extends React.Component {
 
         return (
             <div>
+                <h1>Inventory Control Panel</h1>
                 {page}
             </div>
         );

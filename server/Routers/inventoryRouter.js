@@ -27,7 +27,7 @@ router.get('/', validateHighPermission, (req, res) => {
 //router.get('/', (req, res) => {
     //res.render('inventory');
     //res.sendFile(path.join(__dirname, '../views/inventory.ejs'));
-    res.status(200).send();
+    res.status(200).json();     // json purely to avoid annoying XML Parsing error
 });
 
 router.post('/create', async (req, res) => {
