@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 //import Register from './pages/register';
-//import Store from './pages/store';
+import Store from './pages/Store';
 import Inventory from './pages/Inventory';
 
 function App() {
@@ -20,9 +20,11 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Link to="/login">Log in</Link>
+        <Link to="/store">Store</Link>
         <Link to="/inventory">Inventory</Link>
         <Routes>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/store" element={<Store/>}/>
           <Route path="/inventory" element={<Inventory/>}/>
         </Routes>
       </BrowserRouter>

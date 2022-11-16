@@ -7,7 +7,7 @@ const morgan = require('morgan');
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', 'http://localhost:8080'];
 
 app.use(morgan('dev'));
 app.use(cors({

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import CreateProduct from '../components/CreateProduct';
 import UpdateProduct from '../components/UpdateProduct';
+import DeleteProduct from '../components/DeleteProduct';
 
 const URL = 'http://localhost:8080/inventory';
 
@@ -48,7 +49,8 @@ export default class Inventory extends React.Component {
         else {
             page = [
                 <CreateProduct/>,
-                <UpdateProduct/>
+                <UpdateProduct/>,
+                <DeleteProduct/>
             ];
         }
 
