@@ -3,7 +3,9 @@ import React from "react";
 export default class DeleteProduct extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            name: ''
+        };
     }
 
     render() {

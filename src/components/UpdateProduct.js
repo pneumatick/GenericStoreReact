@@ -3,7 +3,11 @@ import React from 'react';
 export default class UpdateProduct extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            name: '',
+            quantity: 0,
+            price: 0
+        };
     }
 
     render() {
