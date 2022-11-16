@@ -53,22 +53,31 @@ export default class Login extends React.Component {
         return (
             <div>
                 <h1>Log in</h1>
-                <div className="login-form">
-                    <label>Username</label>
-                    <input 
-                        id="username"
-                        type="text" 
-                        placeholder="Enter your username"
-                        onChange={this.handleChange}
-                    />
-                    <label>Password</label>
-                    <input 
-                        id="password"
-                        type="password" 
-                        placeholder="Enter your password"
-                        onChange={this.handleChange}
-                    />
-                    <button onClick={this.logIn}>Log in</button>
+                <div className="Login-form">
+                    <div className='Form-field'>
+                        <label>Username</label>
+                        <input 
+                            id="username"
+                            type="text" 
+                            placeholder="Enter your username"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className='Form-field'>
+                        <label>Password</label>
+                        <input 
+                            id="password"
+                            type="password" 
+                            placeholder="Enter your password"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button 
+                        className='Form-button' 
+                        onClick={this.logIn}
+                    >
+                        Log in
+                    </button>
                 </div>
             </div>
         );
