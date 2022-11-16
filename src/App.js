@@ -16,11 +16,17 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <Link className='App-link' to="/">Home</Link>
-        <Link className='App-link' to="/register">Register</Link>
-        <Link className='App-link' to="/login">Log in</Link>
-        <Link className='App-link' to="/store">Store</Link>
-        <Link className='App-link' to="/inventory">Inventory</Link>
+        <div className='App-header'>
+          <div>
+            <Link className='App-link' to="/">Home</Link>
+            <Link className='App-link' to="/store">Store</Link>
+            <Link className='App-link' to="/inventory">Inventory</Link>
+          </div>
+          <div className='Account-links'>
+            <Link className='App-link' to="/register">Register</Link>
+            <Link className='App-link' to="/login">Log in</Link>
+          </div>
+        </div>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/register" element={<Register/>}/>

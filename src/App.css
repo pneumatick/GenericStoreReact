@@ -15,22 +15,21 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  min-height: 5vh;
+  max-height: 10vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
   color: white;
 }
 
 .App-link {
-  color: blue;
+  color: red;
   margin: 0 14px;
 }
 
 .App-link:hover {
-  color: red;
+  color: green;
 }
 
 .Registration-form, .Login-form, .Inventory-form {
