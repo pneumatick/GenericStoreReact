@@ -6,7 +6,15 @@ export default class AccountLinks extends React.Component {
         let links;
 
         if (this.props.loggedIn) {
-            links = [<p key="shut up">log out placeholder</p>];
+            links = [
+                <a 
+                    key="logout" 
+                    href="#" 
+                    onClick={() => this.props.loginToggle(false)}
+                >
+                    Log out
+                </a>
+            ];
         }
         else {
             links = [

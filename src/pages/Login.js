@@ -41,8 +41,11 @@ export default class Login extends React.Component {
             }
         })
         .then((res) => {
-            this.props.loginToggle();
-            console.log('Log in successful!');
+            this.props.loginToggle(true);
+            this.props.setPermission(res.data.permission);
+            console.log('Log in successful!\n' +
+                        `Username: ${res.data.username}\n` +
+                        `Permission: ${res.data.permission}\n`);
         })
         .catch((error) => {
             console.error(`${error}`);

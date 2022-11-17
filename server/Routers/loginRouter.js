@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
             req.session.user = {username: username, permission: user.permission}
             console.log(req.session); // just for testing, obviously insecure
             //res.redirect('store');
-            res.status(200).json();
+            res.status(200).json(req.session.user);
         }
         else {
             res.status(403).json({ msg: 'Bad credentials' });
