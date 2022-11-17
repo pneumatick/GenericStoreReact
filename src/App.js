@@ -1,42 +1,50 @@
 import './App.css';
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AccountLinks from './components/AccountLinks';
+import NavLinks from './components/NavLinks';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Store from './pages/Store';
 import Inventory from './pages/Inventory';
 
-function App() {
-  /*return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );*/
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        <div className='App-header'>
-          <div>
-            <Link className='App-link' to="/">Home</Link>
-            <Link className='App-link' to="/store">Store</Link>
-            <Link className='App-link' to="/inventory">Inventory</Link>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    };
+
+    this.loginToggle = this.loginToggle.bind(this);
+  }
+
+  loginToggle() {
+    this.setState({ loggedIn: !this.state.loggedIn });
+  }
+
+  render() {
+    let loggedIn = this.state.loggedIn;
+    console.log(loggedIn)
+
+    return (
+      <div className='App'>
+        <BrowserRouter>
+          <div className='App-header'>
+            <NavLinks/>
+            <AccountLinks loggedIn={loggedIn}/>
           </div>
-          <div className='Account-links'>
-            <Link className='App-link' to="/register">Register</Link>
-            <Link className='App-link' to="/login">Log in</Link>
-          </div>
-        </div>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/store" element={<Store/>}/>
-          <Route path="/inventory" element={<Inventory/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/login" element={<Login loginToggle={this.loginToggle}/>}/>
+            <Route path="/store" element={<Store/>}/>
+            <Route path="/inventory" element={<Inventory/>}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    )
+  }
 }
 
 export default App;

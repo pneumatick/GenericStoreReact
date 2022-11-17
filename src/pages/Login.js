@@ -31,7 +31,7 @@ export default class Login extends React.Component {
     }
 
     async logIn() {
-        const res = await axios({
+        await axios({
             method: 'post',
             url: URL,
             withCredentials: true,
@@ -41,7 +41,7 @@ export default class Login extends React.Component {
             }
         })
         .then((res) => {
-            console.log(res.headers)
+            this.props.loginToggle();
             console.log('Log in successful!');
         })
         .catch((error) => {

@@ -67,9 +67,9 @@ export default class Inventory extends React.Component {
     render() {
         let page;
         let forms = [
-            <CreateProduct makePost={this.composePostReq} />,
-            <UpdateProduct makePost={this.composePostReq} />,
-            <DeleteProduct makePost={this.composePostReq} />
+            <CreateProduct key='create' makePost={this.composePostReq} />,
+            <UpdateProduct key='update' makePost={this.composePostReq} />,
+            <DeleteProduct key='delete' makePost={this.composePostReq} />
         ];
 
         // Ensure that unauthorized users cannot see the forms
