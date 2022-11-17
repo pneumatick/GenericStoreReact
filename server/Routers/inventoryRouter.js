@@ -23,6 +23,7 @@ function validateHighPermission(req, res, next) {
     }
 }
 
+// May be unnecessary 
 router.get('/', validateHighPermission, (req, res) => {
 //router.get('/', (req, res) => {
     //res.render('inventory');

@@ -4,6 +4,8 @@ import CreateProduct from '../components/CreateProduct';
 import UpdateProduct from '../components/UpdateProduct';
 import DeleteProduct from '../components/DeleteProduct';
 
+import { BrowserRouter, Route } from 'react-router-dom';
+
 const URL = 'http://localhost:8080/inventory';
 
 export default class Inventory extends React.Component {
@@ -11,12 +13,16 @@ export default class Inventory extends React.Component {
         super(props);
         this.state = { 
             loading: true,
-            authorized: false
+            authorized: false,
+            selectedForm: 0
         };
 
         this.composePostReq = this.composePostReq.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
+    // Unnecessary; Remove later
+    //
     // Confirm that the user is authorized to view the control panel forms.
     // Status 200 = Authorized
     // Any other status = Unauthorized (may need to handle some statuses explicitly later)
@@ -60,11 +66,28 @@ export default class Inventory extends React.Component {
         });
     }
 
+    handleClick(e) {
+        switch (e.target.id) {
+            case 'create':
+                this.setState({ selectedForm: 0 });
+                break;
+            case 'update':
+                this.setState({ selectedForm: 1 });
+                break;
+            case 'delete':
+                this.setState({ selectedForm: 2 });
+                break;
+            default:
+                console.log(`Unexpected element: ${e.target}`);
+        }
+    }
+
     componentDidMount() {
         this.getPage();
     }
 
     render() {
+        let selectedForm = this.state.selectedForm;
         let page;
         let forms = [
             <CreateProduct key='create' makePost={this.composePostReq} />,
@@ -80,12 +103,18 @@ export default class Inventory extends React.Component {
             page = <p>You are not authorized to view this page</p>;
         }
         else {
-            page = forms;
+            page = forms[selectedForm];
         }
 
         return (
             <div>
+                
                 <h1>Inventory Control Panel</h1>
+                <div className='Inventory-navbar'>
+                    <a id="create" href="#" onClick={this.handleClick}>Create</a>
+                    <a id="update" href="#" onClick={this.handleClick}>Update</a>
+                    <a id="delete" href="#" onClick={this.handleClick}>Delete</a>
+                </div>
                 {page}
             </div>
         );
