@@ -7,8 +7,8 @@ export default class UpdateProduct extends React.Component {
         super(props);
         this.state = {
             name: '',
-            quantity: 0,
-            price: 0
+            quantity: '',
+            price: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,11 +34,24 @@ export default class UpdateProduct extends React.Component {
     }
 
     render() {
+        let name = this.state.name;
+        let quantity = this.state.quantity;
+        let price = this.state.price;
+        let validQuantity = false;
+        let validPrice = false;
+        let disabled = true;
         let data = {
-            product: this.state.name,
-            quantity: this.state.quantity,
-            price: this.state.price
+            product: name,
+            quantity: quantity,
+            price: price
         };
+
+        // Check for valid quantity and price
+        quantity >= 0 && quantity !== '' ? validQuantity = true : validQuantity = false;
+        price >= 0 & price !== '' ? validPrice = true : validPrice = false;
+
+        // Ensure the required conditions are met before enabling the update button
+        name && validQuantity && validPrice ? disabled = false : disabled = true;
 
         return (
             <div className='Inventory-form'>
@@ -58,6 +71,7 @@ export default class UpdateProduct extends React.Component {
                 <button 
                     className='Form-button'
                     onClick={() => this.props.makePost(DESTINATION, data)}
+                    disabled={disabled}
                 >
                     Update
                 </button>
