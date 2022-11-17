@@ -26,9 +26,11 @@ export default class DeleteProduct extends React.Component {
     }
 
     render() {
-        let data = {
-            product: this.state.name
-        };
+        let data = { product: this.state.name };
+        let name = this.state.name;
+        let disabled = true;
+
+        name ? disabled = false : disabled = true;
 
         return (
             <div className="Inventory-form">
@@ -40,6 +42,7 @@ export default class DeleteProduct extends React.Component {
                 <button 
                     className="Form-button"
                     onClick={() => this.props.makePost(DESTINATION, data)}
+                    disabled={disabled}
                 >
                     Delete
                 </button>
