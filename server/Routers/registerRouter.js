@@ -5,9 +5,9 @@ const sqlite3 = require('sqlite3');
 const userDB = new sqlite3.Database('./databases/users.sqlite');
 const { queryUser, registerUser } = require('./helpers');
 
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
     res.render('register');
-});
+});*/
 
 router.post('/', async (req, res) => {
     try {

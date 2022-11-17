@@ -3,9 +3,9 @@ const router = express.Router();
 const sqlite3 = require('sqlite3');
 const inventoryDB = new sqlite3.Database('./databases/inventory.sqlite');
 
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
     res.render('store');
-});
+});*/
 
 router.get('/products', async (req, res) => {
     const products = await getProducts().catch(e => { 

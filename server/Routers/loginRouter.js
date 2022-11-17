@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 const { queryUser } = require('./helpers');
 
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
     res.render('login');
-});
+});*/
 
 router.post('/', async (req, res) => {
     const { username, password } = req.body;
