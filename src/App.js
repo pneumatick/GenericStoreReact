@@ -14,11 +14,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       loggedIn: false,
-      permission: ''
+      permission: '',
+      cart: []
     };
 
     this.loginToggle = this.loginToggle.bind(this);
     this.setPermission = this.setPermission.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   loginToggle(status) {
@@ -29,6 +31,10 @@ class App extends React.Component {
     this.setState({ permission: permission });
   }
 
+  addToCart(name) {
+    this.setState({ cart: [...this.state.cart, name] });
+  }
+
   componentDidUpdate() {
     let loggedIn = this.state.loggedIn;
     let permission = this.state.permission;
@@ -36,8 +42,10 @@ class App extends React.Component {
     if (!loggedIn && permission) {
       this.setState({ permission: '' });
     }
-  }
 
+    console.log(this.state.cart);
+  }
+  
   render() {
     let loggedIn = this.state.loggedIn;
 
@@ -61,7 +69,7 @@ class App extends React.Component {
                 />
               }
             />
-            <Route path="/store" element={<Store/>}/>
+            <Route path="/store" element={<Store addToCart={this.addToCart}/>}/>
             <Route path="/inventory" element={<Inventory/>}/>
           </Routes>
         </BrowserRouter>

@@ -46,11 +46,9 @@
   margin: 8px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Store-products {
+  width: 70vw;
+  margin: 0 15vw;
+  display: flex;
+  justify-content: space-around;
 }
