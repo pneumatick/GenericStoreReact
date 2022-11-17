@@ -26,8 +26,8 @@ export default class DeleteProduct extends React.Component {
     }
 
     render() {
-        let data = { product: this.state.name };
-        let name = this.state.name;
+        let name = this.state.name.trim();
+        let data = { product: name };
         let disabled = true;
 
         name ? disabled = false : disabled = true;

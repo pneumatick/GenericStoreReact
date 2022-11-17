@@ -34,9 +34,9 @@ export default class UpdateProduct extends React.Component {
     }
 
     render() {
-        let name = this.state.name;
-        let quantity = this.state.quantity;
-        let price = this.state.price;
+        let name = this.state.name.trim();
+        let quantity = this.state.quantity.trim();
+        let price = this.state.price.trim();
         let validQuantity = false;
         let validPrice = false;
         let disabled = true;
