@@ -50,6 +50,12 @@ export default class Login extends React.Component {
     }
 
     render() {
+        let username = this.state.username;
+        let password = this.state.password;
+        let disabled = true;
+
+        username && password ? disabled = false : disabled = true;
+
         return (
             <div>
                 <h1>Log in</h1>
@@ -75,6 +81,7 @@ export default class Login extends React.Component {
                     <button 
                         className='Form-button' 
                         onClick={this.logIn}
+                        disabled={disabled}
                     >
                         Log in
                     </button>

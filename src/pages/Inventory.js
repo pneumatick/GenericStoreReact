@@ -19,7 +19,7 @@ export default class Inventory extends React.Component {
 
     // Confirm that the user is authorized to view the control panel forms.
     // Status 200 = Authorized
-    // Any other status = Unauthorized (may need to handle some stauses explicitly later)
+    // Any other status = Unauthorized (may need to handle some statuses explicitly later)
     async getPage() {
         let authorized = false;
 
@@ -60,7 +60,7 @@ export default class Inventory extends React.Component {
         });
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.getPage();
     }
 

@@ -60,6 +60,22 @@ export default class Register extends React.Component {
     }
 
     render() {
+        let username = this.state.username;
+        let password = this.state.password;
+        let email = this.state.email;
+        let validEmail = false;
+        let disabled = true;
+
+        // Check for a valid email address format
+        let splitEmail = email.split('@');
+        if (splitEmail.length === 2) {
+            let domain = splitEmail[1].split('.');
+            domain.length === 2 && domain[1] !== '' ? validEmail = true : validEmail = false;
+        }
+
+        // Ensure the required conditions are met before enabling the register button
+        username && password && validEmail ? disabled = false : disabled = true;
+
         return (
             <div className="Registration-form">
                 <h1>Register a new account</h1>
@@ -93,6 +109,7 @@ export default class Register extends React.Component {
                 <button 
                     className="Form-button" 
                     onClick={this.makePostReq}
+                    disabled={disabled}
                 >
                     Register
                 </button>

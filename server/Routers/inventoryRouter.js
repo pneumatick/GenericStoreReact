@@ -30,7 +30,7 @@ router.get('/', validateHighPermission, (req, res) => {
     res.status(200).json();     // json purely to avoid annoying XML Parsing error
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', validateHighPermission, async (req, res) => {
     const { product, quantity, price } = req.body;
     await createProduct(product, quantity, price).catch(e => { 
         console.log(e); 
@@ -41,7 +41,7 @@ router.post('/create', async (req, res) => {
     res.status(200).send();
 });
 
-router.post('/update', async (req, res) => {
+router.post('/update', validateHighPermission, async (req, res) => {
     const { product, quantity, price } = req.body;
     await updateProduct(product, quantity, price).catch(e => { 
         console.log(e); 
@@ -52,7 +52,7 @@ router.post('/update', async (req, res) => {
     res.status(200).send();
 });
 
-router.post('/delete', async (req, res) => {
+router.post('/delete', validateHighPermission, async (req, res) => {
     const { product } = req.body;
     await deleteProduct(product).catch(e => { 
         console.log(e); 
