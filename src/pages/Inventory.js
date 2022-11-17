@@ -4,8 +4,6 @@ import CreateProduct from '../components/CreateProduct';
 import UpdateProduct from '../components/UpdateProduct';
 import DeleteProduct from '../components/DeleteProduct';
 
-import { BrowserRouter, Route } from 'react-router-dom';
-
 const URL = 'http://localhost:8080/inventory';
 
 export default class Inventory extends React.Component {
@@ -82,7 +80,7 @@ export default class Inventory extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getPage();
     }
 

@@ -54,6 +54,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div className='App-header'>
             <NavLinks permission={this.state.permission}/>
+            {this.state.loggedIn ? <p>Items in cart: {this.state.cart.length}</p> : null}
             <AccountLinks 
               loggedIn={loggedIn}
               loginToggle={this.loginToggle}
@@ -69,7 +70,7 @@ class App extends React.Component {
                 />
               }
             />
-            <Route path="/store" element={<Store addToCart={this.addToCart}/>}/>
+            <Route path="/store" element={<Store addToCart={this.addToCart} />}/>
             <Route path="/inventory" element={<Inventory/>}/>
           </Routes>
         </BrowserRouter>

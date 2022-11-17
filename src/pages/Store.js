@@ -31,7 +31,7 @@ export default class Store extends React.Component {
         this.setState({ products: newProducts });
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getProducts();
     }
 
