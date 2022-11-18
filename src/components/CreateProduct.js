@@ -39,9 +39,9 @@ export default class CreateProduct extends React.Component {
         let quantityField = document.getElementById('quantity');
         let priceField = document.getElementById('price');
         let data = {
-            product: this.state.name,
-            quantity: this.state.quantity,
-            price: this.state.price
+            product: this.state.name.trim(),
+            quantity: this.state.quantity.trim(),
+            price: this.state.price.trim()
         };
 
         let success = this.props.makePost(DESTINATION, data);

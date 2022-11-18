@@ -10,6 +10,7 @@ export default class DeleteProduct extends React.Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.postWrapper = this.postWrapper.bind(this);
     }
 
     handleChange(e) {
@@ -25,9 +26,23 @@ export default class DeleteProduct extends React.Component {
         }
     }
 
+    postWrapper() {
+        let nameField = document.getElementById('name');
+        let data = {
+            product: this.state.name.trim(),
+        };
+
+        let success = this.props.makePost(DESTINATION, data);
+        if (success) {
+            this.setState({
+                name: '',
+            });
+            nameField.value = '';
+        }
+    }
+
     render() {
         let name = this.state.name.trim();
-        let data = { product: name };
         let disabled = true;
 
         name ? disabled = false : disabled = true;
@@ -41,7 +56,7 @@ export default class DeleteProduct extends React.Component {
                 </div>
                 <button 
                     className="Form-button"
-                    onClick={() => this.props.makePost(DESTINATION, data)}
+                    onClick={this.postWrapper}
                     disabled={disabled}
                 >
                     Delete
