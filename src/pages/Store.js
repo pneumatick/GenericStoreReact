@@ -36,7 +36,7 @@ export default class Store extends React.Component {
         return (
             <div className="Store-page">
                 <div className="Store-container">
-                    <h1>Store</h1>
+                    <h1 className="Page-title">Store</h1>
                     <div className="Store-products">
                         {this.state.products}
                     </div>

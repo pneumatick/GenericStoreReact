@@ -8,10 +8,19 @@ export default class Product extends React.Component {
 
         return (
             <div className='Product'>
-                <p>Image goes here</p>
+                <div className='Product-image-container'>
+                    <image src='#'>
+                        Image goes here
+                    </image>
+                </div>
                 <p>{name}: ${price}</p>
                 <p>{quantity} available</p>
-                <button onClick={() => this.props.addToCart(name)}>Add to cart</button>
+                <button 
+                    className='Product-button'
+                    onClick={() => this.props.addToCart(name)}
+                >
+                    Add to cart
+                </button>
             </div>
         );
     }

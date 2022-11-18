@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: none;
+}
+
 label {
   font-size: 0.75em;
   margin-bottom: 8px;
