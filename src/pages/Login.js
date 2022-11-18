@@ -60,9 +60,9 @@ export default class Login extends React.Component {
         username && password ? disabled = false : disabled = true;
 
         return (
-            <div>
-                <h1>Log in</h1>
-                <div className="Login-form">
+            <div className='Login-page'>
+                <div className='Login-form'>
+                    <p>Log in</p>
                     <div className='Form-field'>
                         <label>Username</label>
                         <input 

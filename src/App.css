@@ -1,9 +1,11 @@
+/* App */
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #4f964b;
   height: 5vh;
   display: flex;
   align-items: center;
@@ -18,13 +20,15 @@
 }
 
 .App-link {
-  color: red;
+  color: rgb(255, 255, 255);
   margin: 0 14px;
 }
 
 .App-link:hover {
-  color: green;
+  color: rgb(247, 168, 51);
 }
+
+/* Forms, form-related elements */
 
 .Registration-form, .Login-form, .Inventory-form {
   display: flex;
@@ -34,15 +38,59 @@
   margin: 0 40vw;
 }
 
-.Form-field, .Form-button {
+.Login-form {
   display: flex;
   flex-direction: column;
-  margin: 8px 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  min-width: 200px;
+  max-width: 600px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
 }
+
+.Form-field, .Form-button {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 8px 5%;
+}
+
+.Login-form > p {
+  margin: 8px 5%;
+}
+
+.Form-field > input {
+  width: calc(100% - 8px);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* Register */
+
+.Register-page
+
+/* Login */
+
+.Login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  background-color: rgb(201, 21, 201);
+}
+
+/* Inventory */
 
 .Nav-button {
   margin: 0 8px;
 }
+
+/* Store */
 
 .Store-products {
   width: 70vw;
@@ -51,6 +99,8 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+/* General */
 
 .Product {
   min-width: 10vw;
