@@ -12,8 +12,11 @@
 }
 
 .App-header {
+  position: fixed;
+  top: 0;
   background-color: #4f964b;
   height: 5vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -92,6 +95,7 @@
   justify-content: center;
   height: 95vh;
   background-color: var(--page-color);
+  margin-top: 5vh;
 }
 
 .Inventory-page {
