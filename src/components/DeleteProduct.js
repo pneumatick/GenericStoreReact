@@ -49,7 +49,7 @@ export default class DeleteProduct extends React.Component {
 
         return (
             <div className="Inventory-form">
-                <h3>Delete</h3>
+                <p>Delete</p>
                 <div className="Form-field">
                     <label>Product</label>
                     <input id="name" type="text" onChange={this.handleChange}/>

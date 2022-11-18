@@ -6,3 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+label {
+  font-size: 0.75em;
+  margin-bottom: 8px;
+}

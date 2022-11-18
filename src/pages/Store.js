@@ -34,10 +34,12 @@ export default class Store extends React.Component {
 
     render() {
         return (
-            <div className="Store">
-                <h1>Store</h1>
-                <div className="Store-products">
-                    {this.state.products}
+            <div className="Store-page">
+                <div className="Store-container">
+                    <h1>Store</h1>
+                    <div className="Store-products">
+                        {this.state.products}
+                    </div>
                 </div>
             </div>
         );

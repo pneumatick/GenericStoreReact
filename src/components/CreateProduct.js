@@ -74,7 +74,7 @@ export default class CreateProduct extends React.Component {
 
         return (
             <div className='Inventory-form'>
-                <h3>Create</h3>
+                <p>Create</p>
                 <div className='Form-field'>
                     <label>Product</label>
                     <input id="name" type="text" onChange={this.handleChange}/>

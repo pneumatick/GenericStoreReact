@@ -92,7 +92,7 @@ export default class Inventory extends React.Component {
             <DeleteProduct key='delete' makePost={this.composePostReq} />
         ];
         let page = [
-            <h1 key="title">Inventory Control Panel</h1>,
+            <h1 key="title" style={{color: 'white'}}>Inventory Control Panel</h1>,
             <div key="Inventory-navbar" className='Inventory-navbar'>
                 <button id="create" className='Nav-button' onClick={this.handleClick}>Create</button>
                 <button id="update" className='Nav-button' onClick={this.handleClick}>Update</button>
@@ -102,9 +102,11 @@ export default class Inventory extends React.Component {
         ];
 
         return (
-            <div>
-                {loading ? <p>Loading...</p> : null}
-                {authorized ? page : <p>You have not been authorized to view this page</p>}
+            <div className='Inventory-page'>
+                <div className='Inventory-control-panel'>
+                    {loading ? <p>Loading...</p> : null}
+                    {authorized ? page : <p>You have not been authorized to view this page</p>}
+                </div>
             </div>
         );
     }

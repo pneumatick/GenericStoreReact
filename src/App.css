@@ -39,17 +39,10 @@
 .Registration-form, .Login-form, .Inventory-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 20vw;
-  margin: 0 40vw;
-}
-
-.Registration-form, .Login-form {
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   width: 90%;
+  max-width: 20vw;
   margin: 50px 0;
   border: 1px solid black;
   border-radius: 5px;
@@ -58,23 +51,28 @@
 
 .Registration-form {
   height: 265px;
-  max-width: 400px;
 }
 
 .Login-form {
   height: 200px;
-  max-width: 400px;
+}
+
+.Inventory-form {
+  max-height: 300px;
 }
 
 .Form-field, .Form-button {
   width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   margin: 8px 5%;
 }
 
-.Registration-form > p, .Login-form > p {
+.Form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Registration-form > p, .Login-form > p, .Inventory-form > p {
   margin: 8px 5%;
 }
 
@@ -86,15 +84,34 @@
 
 /* Register page */
 /* Login page */
+/* Inventory page */
 
-.Registration-page, .Login-page {
+.Home-page, .Registration-page, .Login-page, .Inventory-page, .Store-page {
   display: flex;
   justify-content: center;
   height: 95vh;
   background-color: var(--page-color);
 }
 
-/* Inventory page */
+.Inventory-page {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Inventory-control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 50px;
+  background-color: rgb(138, 94, 69);
+}
+
+.Inventory-navbar {
+  margin: 0 0 21.44px 0;
+}
 
 .Nav-button {
   margin: 0 8px;
