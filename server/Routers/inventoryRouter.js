@@ -6,6 +6,46 @@ const path = require('path')
 
 const HIGH_PERMISSIONS = ['admin', 'employee'];
 
+// Implementing middleware
+router.use(validateHighPermission);
+
+// May be unnecessary 
+router.get('/', (req, res) => {
+    res.status(200).json();     // json purely to avoid annoying XML Parsing error
+});
+
+router.post('/create', async (req, res) => {
+    const { product, quantity, price } = req.body;
+    await createProduct(product, quantity, price).catch(e => { 
+        console.log(e); 
+        res.status(500).send(); 
+    });
+    console.log(`New product ${product} added`);
+    res.status(200).json();
+});
+
+router.post('/update', async (req, res) => {
+    const { product, quantity, price } = req.body;
+    await updateProduct(product, quantity, price).catch(e => { 
+        console.log(e); 
+        res.status(500).send(); 
+    });
+    console.log(`${product} updated`);
+    res.status(200).json();
+});
+
+router.post('/delete', async (req, res) => {
+    const { product } = req.body;
+    await deleteProduct(product).catch(e => { 
+        console.log(e); 
+        res.status(500).send(); 
+    });
+    console.log(`${product} deleted`);
+    res.status(200).json();
+});
+
+/* Middleware */
+
 function validateHighPermission(req, res, next) {
     try {
         console.log(req.session)
@@ -22,47 +62,6 @@ function validateHighPermission(req, res, next) {
         res.status(500).json({ msg: 'An error has occured, likely because the user hasn\'t logged in.' });
     }
 }
-
-// May be unnecessary 
-router.get('/', validateHighPermission, (req, res) => {
-//router.get('/', (req, res) => {
-    //res.render('inventory');
-    //res.sendFile(path.join(__dirname, '../views/inventory.ejs'));
-    res.status(200).json();     // json purely to avoid annoying XML Parsing error
-});
-
-router.post('/create', validateHighPermission, async (req, res) => {
-    const { product, quantity, price } = req.body;
-    await createProduct(product, quantity, price).catch(e => { 
-        console.log(e); 
-        res.status(500).send(); 
-    });
-    console.log(`New product ${product} added`);
-    //res.redirect('/inventory');
-    res.status(200).send();
-});
-
-router.post('/update', validateHighPermission, async (req, res) => {
-    const { product, quantity, price } = req.body;
-    await updateProduct(product, quantity, price).catch(e => { 
-        console.log(e); 
-        res.status(500).send(); 
-    });
-    console.log(`${product} updated`);
-    //res.redirect('/inventory');
-    res.status(200).send();
-});
-
-router.post('/delete', validateHighPermission, async (req, res) => {
-    const { product } = req.body;
-    await deleteProduct(product).catch(e => { 
-        console.log(e); 
-        res.status(500).send(); 
-    });
-    console.log(`${product} deleted`);
-    //res.redirect('/inventory');
-    res.status(200).send();
-});
 
 /* SQLite functions */
 
