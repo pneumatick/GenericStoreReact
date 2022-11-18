@@ -97,9 +97,6 @@ export default class Inventory extends React.Component {
         if (loading) {
             page = <p>Loading...</p>;
         }
-        else if (!authorized) {
-            page = <p>You are not authorized to view this page</p>;
-        }
         else {
             page = [
                 <h1 key="title">Inventory Control Panel</h1>,
@@ -114,7 +111,7 @@ export default class Inventory extends React.Component {
 
         return (
             <div>
-                {page}
+                {authorized ? page : <p>You have not been authorized to view this page</p>}
             </div>
         );
     }
