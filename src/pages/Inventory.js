@@ -19,33 +19,10 @@ export default class Inventory extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    // Unnecessary; Remove later
-    //
-    // Confirm that the user is authorized to view the control panel forms.
-    // Status 200 = Authorized
-    // Any other status = Unauthorized (may need to handle some statuses explicitly later)
-    async getPage() {
-        let authorized = false;
-
-        let res = await axios({
-            method: 'get',
-            url: URL,
-            withCredentials: true
-        })
-        .then((res) => {
-            res.status === 200 ? authorized = true : authorized = false;
-        })
-        .catch((error) => {
-            console.error(error.message)
-        });
-
-        this.setState({ loading: false, authorized: authorized});
-    }
-
     // Make an inventory-related POST request.
     // Intended for creating, updating, and deleting products.
     async composePostReq(destination, data) {
-        let res = await axios({
+        await axios({
             method: 'post',
             url: URL + destination,
             withCredentials: true,
@@ -54,14 +31,17 @@ export default class Inventory extends React.Component {
         .then((res) => {
             if (res.status === 200) {
                 console.log("Post successful!");
+                return true;
             }
             else {
                 console.log(`Status: ${res.status}`);
             }
         })
         .catch((error) => {
-            console.error(error.message)
+            console.error(error.message);
         });
+
+        return false;
     }
 
     handleClick(e) {
@@ -80,8 +60,26 @@ export default class Inventory extends React.Component {
         }
     }
 
-    componentWillMount() {
-        this.getPage();
+    // Unnecessary; Remove later
+    //
+    // Confirm that the user is authorized to view the control panel forms.
+    // Status 200 = Authorized
+    // Any other status = Unauthorized (may need to handle some statuses explicitly later)
+    componentDidMount() {
+        axios({
+            method: 'get',
+            url: URL,
+            withCredentials: true
+        })
+        .then((res) => {
+            if (res.status === 200) {
+                this.setState({ loading: false, authorized: true});
+            }
+        })
+        .catch((error) => {
+            console.error(error.message);
+            this.setState({ loading: false, authorized: false});
+        });
     }
 
     render() {
@@ -106,12 +104,11 @@ export default class Inventory extends React.Component {
 
         return (
             <div>
-                
                 <h1>Inventory Control Panel</h1>
                 <div className='Inventory-navbar'>
-                    <a id="create" href="#" onClick={this.handleClick}>Create</a>
-                    <a id="update" href="#" onClick={this.handleClick}>Update</a>
-                    <a id="delete" href="#" onClick={this.handleClick}>Delete</a>
+                    <button id="create" className='Nav-button' onClick={this.handleClick}>Create</button>
+                    <button id="update" className='Nav-button' onClick={this.handleClick}>Update</button>
+                    <button id="delete" className='Nav-button' onClick={this.handleClick}>Delete</button>
                 </div>
                 {page}
             </div>

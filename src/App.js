@@ -42,8 +42,6 @@ class App extends React.Component {
     if (!loggedIn && permission) {
       this.setState({ permission: '' });
     }
-
-    console.log(this.state.cart);
   }
   
   render() {

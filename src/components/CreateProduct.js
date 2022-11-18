@@ -12,6 +12,7 @@ export default class CreateProduct extends React.Component {
         }
     
         this.handleChange = this.handleChange.bind(this);
+        this.postWrapper = this.postWrapper.bind(this);
     }
 
     handleChange(e) {
@@ -33,6 +34,29 @@ export default class CreateProduct extends React.Component {
         }
     }
 
+    postWrapper() {
+        let nameField = document.getElementById('name');
+        let quantityField = document.getElementById('quantity');
+        let priceField = document.getElementById('price');
+        let data = {
+            product: this.state.name,
+            quantity: this.state.quantity,
+            price: this.state.price
+        };
+
+        let success = this.props.makePost(DESTINATION, data);
+        if (success) {
+            this.setState({
+                name: '',
+                quantity: '',
+                price: ''
+            });
+            nameField.value = '';
+            quantityField.value = '';
+            priceField.value = '';
+        }
+    }
+
     render() {
         let name = this.state.name.trim();
         let quantity = this.state.quantity.trim();
@@ -40,11 +64,6 @@ export default class CreateProduct extends React.Component {
         let validQuantity = false;
         let validPrice = false;
         let disabled = true;
-        let data = {
-            product: name,
-            quantity: quantity,
-            price: price
-        };
 
         // Check for valid quantity and price
         quantity >= 0 && quantity !== '' ? validQuantity = true : validQuantity = false;
@@ -70,7 +89,7 @@ export default class CreateProduct extends React.Component {
                 </div>
                 <button 
                     className='Form-button'
-                    onClick={() => this.props.makePost(DESTINATION, data)}
+                    onClick={this.postWrapper}
                     disabled={disabled}
                 >
                     Create
