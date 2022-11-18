@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -24,6 +24,10 @@ class App extends React.Component {
 
   loginToggle(status) {
     this.setState({ loggedIn: status });
+
+    if (status) {
+      console.log(`Status: ${status}`);
+    }
   }
 
   setPermission(permission) {
@@ -61,7 +65,7 @@ class App extends React.Component {
             <Route path="/" element={<Home/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={
-                <Login 
+                loggedIn ? <Navigate to="/store"/> : <Login 
                   loginToggle={this.loginToggle}
                   setPermission={this.setPermission}
                 />
