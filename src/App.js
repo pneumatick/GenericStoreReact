@@ -1,8 +1,7 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AccountLinks from './components/AccountLinks';
-import NavLinks from './components/NavLinks';
+import Header from './components/Header';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -46,18 +45,18 @@ class App extends React.Component {
   
   render() {
     let loggedIn = this.state.loggedIn;
+    let permission = this.state.permission;
+    let cart = this.state.cart;
 
     return (
       <div className='App'>
         <BrowserRouter>
-          <div className='App-header'>
-            <NavLinks permission={this.state.permission}/>
-            {this.state.loggedIn ? <p>Items in cart: {this.state.cart.length}</p> : null}
-            <AccountLinks 
-              loggedIn={loggedIn}
-              loginToggle={this.loginToggle}
-            />
-          </div>
+          <Header 
+            loggedIn={loggedIn}
+            permission={permission}
+            cart={cart}
+            loginToggle={this.loginToggle}
+          />
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/register" element={<Register/>}/>

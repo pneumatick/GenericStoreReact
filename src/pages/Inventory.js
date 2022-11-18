@@ -86,31 +86,24 @@ export default class Inventory extends React.Component {
         let loading = this.state.loading;
         let authorized = this.state.authorized;
         let selectedForm = this.state.selectedForm;
-        let page;
         let forms = [
             <CreateProduct key='create' makePost={this.composePostReq} />,
             <UpdateProduct key='update' makePost={this.composePostReq} />,
             <DeleteProduct key='delete' makePost={this.composePostReq} />
         ];
-
-        // Ensure that unauthorized users cannot see the forms
-        if (loading) {
-            page = <p>Loading...</p>;
-        }
-        else {
-            page = [
-                <h1 key="title">Inventory Control Panel</h1>,
-                <div key="Inventory-navbar" className='Inventory-navbar'>
-                    <button id="create" className='Nav-button' onClick={this.handleClick}>Create</button>
-                    <button id="update" className='Nav-button' onClick={this.handleClick}>Update</button>
-                    <button id="delete" className='Nav-button' onClick={this.handleClick}>Delete</button>
-                </div>,
-                forms[selectedForm]
-            ];
-        }
+        let page = [
+            <h1 key="title">Inventory Control Panel</h1>,
+            <div key="Inventory-navbar" className='Inventory-navbar'>
+                <button id="create" className='Nav-button' onClick={this.handleClick}>Create</button>
+                <button id="update" className='Nav-button' onClick={this.handleClick}>Update</button>
+                <button id="delete" className='Nav-button' onClick={this.handleClick}>Delete</button>
+            </div>,
+            forms[selectedForm]
+        ];
 
         return (
             <div>
+                {loading ? <p>Loading...</p> : null}
                 {authorized ? page : <p>You have not been authorized to view this page</p>}
             </div>
         );
