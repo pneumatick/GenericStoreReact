@@ -83,6 +83,8 @@ export default class Inventory extends React.Component {
     }
 
     render() {
+        let loading = this.state.loading;
+        let authorized = this.state.authorized;
         let selectedForm = this.state.selectedForm;
         let page;
         let forms = [
@@ -92,24 +94,26 @@ export default class Inventory extends React.Component {
         ];
 
         // Ensure that unauthorized users cannot see the forms
-        if (this.state.loading) {
+        if (loading) {
             page = <p>Loading...</p>;
         }
-        else if (!this.state.authorized) {
+        else if (!authorized) {
             page = <p>You are not authorized to view this page</p>;
         }
         else {
-            page = forms[selectedForm];
+            page = [
+                <h1 key="title">Inventory Control Panel</h1>,
+                <div key="Inventory-navbar" className='Inventory-navbar'>
+                    <button id="create" className='Nav-button' onClick={this.handleClick}>Create</button>
+                    <button id="update" className='Nav-button' onClick={this.handleClick}>Update</button>
+                    <button id="delete" className='Nav-button' onClick={this.handleClick}>Delete</button>
+                </div>,
+                forms[selectedForm]
+            ];
         }
 
         return (
             <div>
-                <h1>Inventory Control Panel</h1>
-                <div className='Inventory-navbar'>
-                    <button id="create" className='Nav-button' onClick={this.handleClick}>Create</button>
-                    <button id="update" className='Nav-button' onClick={this.handleClick}>Update</button>
-                    <button id="delete" className='Nav-button' onClick={this.handleClick}>Delete</button>
-                </div>
                 {page}
             </div>
         );
