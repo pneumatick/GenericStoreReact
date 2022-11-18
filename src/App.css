@@ -1,3 +1,9 @@
+/* Variables */
+
+:root {
+  --page-color: rgb(48, 75, 116);
+}
+
 /* App */
 
 .App {
@@ -38,18 +44,26 @@
   margin: 0 40vw;
 }
 
-.Login-form {
+.Registration-form, .Login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   width: 90%;
-  min-width: 200px;
-  max-width: 600px;
-  height: 200px;
+  margin: 50px 0;
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
+}
+
+.Registration-form {
+  height: 265px;
+  max-width: 400px;
+}
+
+.Login-form {
+  height: 200px;
+  max-width: 400px;
 }
 
 .Form-field, .Form-button {
@@ -60,7 +74,7 @@
   margin: 8px 5%;
 }
 
-.Login-form > p {
+.Registration-form > p, .Login-form > p {
   margin: 8px 5%;
 }
 
@@ -70,27 +84,23 @@
   border-radius: 5px;
 }
 
-/* Register */
+/* Register page */
+/* Login page */
 
-.Register-page
-
-/* Login */
-
-.Login-page {
+.Registration-page, .Login-page {
   display: flex;
-  align-items: center;
   justify-content: center;
   height: 95vh;
-  background-color: rgb(201, 21, 201);
+  background-color: var(--page-color);
 }
 
-/* Inventory */
+/* Inventory page */
 
 .Nav-button {
   margin: 0 8px;
 }
 
-/* Store */
+/* Store page */
 
 .Store-products {
   width: 70vw;

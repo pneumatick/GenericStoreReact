@@ -17,7 +17,7 @@ export default class Register extends React.Component {
     }
 
     async makePostReq() {
-        let res = await axios({
+        await axios({
             method: 'post',
             url: URL,
             withCredentials: true,
@@ -77,42 +77,44 @@ export default class Register extends React.Component {
         username && password && validEmail ? disabled = false : disabled = true;
 
         return (
-            <div className="Registration-form">
-                <h1>Register a new account</h1>
-                <div className="Form-field">
-                    <label>Username</label>
-                    <input 
-                        id="username" 
-                        type="text" 
-                        placeholder="Enter your username"
-                        onChange={this.handleChange}
-                    />
+            <div className="Registration-page">
+                <div className="Registration-form">
+                    <p>Register a new account</p>
+                    <div className="Form-field">
+                        <label>Username</label>
+                        <input 
+                            id="username" 
+                            type="text" 
+                            placeholder="Enter your username"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="Form-field">
+                        <label>Password</label>
+                        <input 
+                            id="password" 
+                            type="password" 
+                            placeholder="Enter your password"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="Form-field">
+                        <label>Email</label>
+                        <input 
+                            id="email" 
+                            type="email" 
+                            placeholder="Enter your email"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button 
+                        className="Form-button" 
+                        onClick={this.makePostReq}
+                        disabled={disabled}
+                    >
+                        Register
+                    </button>
                 </div>
-                <div className="Form-field">
-                    <label>Password</label>
-                    <input 
-                        id="password" 
-                        type="password" 
-                        placeholder="Enter your password"
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <div className="Form-field">
-                    <label>Email</label>
-                    <input 
-                        id="email" 
-                        type="email" 
-                        placeholder="Enter your email"
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <button 
-                    className="Form-button" 
-                    onClick={this.makePostReq}
-                    disabled={disabled}
-                >
-                    Register
-                </button>
             </div>
         );
     }

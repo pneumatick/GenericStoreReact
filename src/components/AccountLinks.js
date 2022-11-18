@@ -9,13 +9,12 @@ export default class AccountLinks extends React.Component {
         if (this.props.loggedIn) {
             links = [
                 <button key="cart">Cart: {cart.length}</button>,
-                <a 
-                    key="logout" 
-                    href="#" 
+                <button 
+                    key="logout"
                     onClick={() => this.props.loginToggle(false)}
                 >
                     Log out
-                </a>
+                </button>
             ];
         }
         else {
