@@ -9,14 +9,13 @@ export default class Store extends React.Component {
         };
     }
 
-    async getProducts() {
+    componentDidMount() {
         let newProducts = [];
 
-        await fetch('http://localhost:8080/store/products')
+        fetch('http://localhost:8080/store/products')
         .then((response) => response.json())
         .then((products) => {
             products.forEach((product, id) => {
-                //let productListing = <p key={id}>{product.product}: ${product.price} ({product.quantity} available)</p>;
                 let productListing = <Product 
                     key={id}
                     name={product.product}
@@ -26,13 +25,11 @@ export default class Store extends React.Component {
                 />;
                 newProducts.push(productListing);
             });
+            this.setState({ products: newProducts });
+        })
+        .catch((error) => {
+            console.error(error);
         });
-
-        this.setState({ products: newProducts });
-    }
-
-    componentWillMount() {
-        this.getProducts();
     }
 
     render() {

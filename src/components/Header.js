@@ -11,10 +11,10 @@ export default class Header extends React.Component {
         return (
             <div className='App-header'>
                 <NavLinks permission={permission}/>
-                {loggedIn ? <p>Items in cart: {cart.length}</p> : null}
                 <AccountLinks 
                 loggedIn={loggedIn}
                 loginToggle={this.props.loginToggle}
+                cart={cart}
                 />
             </div>
         );

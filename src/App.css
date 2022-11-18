@@ -4,12 +4,17 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 5vh;
-  max-height: 10vh;
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
+}
+
+.Account-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .App-link {
