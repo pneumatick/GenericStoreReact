@@ -2,6 +2,7 @@
 
 :root {
   --page-color: rgb(48, 75, 116);
+  --link-hover-color: rgb(247, 168, 51);
 }
 
 /* App */
@@ -31,7 +32,7 @@
 }
 
 .App-link:hover {
-  color: rgb(247, 168, 51);
+  color: var(--link-hover-color);
 }
 
 /* Forms, form-related elements */
@@ -153,4 +154,18 @@
 
 .Product-button {
   margin-bottom: 16px;
+}
+
+.button-as-link {
+  border: none;
+  padding: 0;
+  background: none;
+  color: white;
+  font-size: 1em;
+  margin: 0 14px;
+}
+
+.button-as-link:hover {
+  color: var(--link-hover-color);
+  cursor: pointer;
 }

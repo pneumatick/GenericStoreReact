@@ -8,9 +8,10 @@ export default class AccountLinks extends React.Component {
 
         if (this.props.loggedIn) {
             links = [
-                <button key="cart">Cart: {cart.length}</button>,
+                <button key="cart" className="button-as-link">Cart: {cart.length}</button>,
                 <button 
                     key="logout"
+                    className="button-as-link"
                     onClick={() => this.props.loginToggle(false)}
                 >
                     Log out
